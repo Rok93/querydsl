@@ -35,7 +35,7 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-//querydsl 추가
+//querydsl 추가 (plugin과 맞물려서 실행 됌)
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
@@ -49,4 +49,8 @@ sourceSets {
 
 configurations {
     querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
 }
